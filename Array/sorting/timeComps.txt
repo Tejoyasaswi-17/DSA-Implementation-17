@@ -1,0 +1,11 @@
+Array sorting techniques and their time complexities
+
+Sl No    Sorting methods         Average           Best                 Worst
+1.       Selection               O(N^2)            
+2.       Bubble
+3.       Insertion
+4.       Merge
+5.       Quick
+6.       DNF
+7.       Wave
+8.       Count

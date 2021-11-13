@@ -1,0 +1,1 @@
+{"name":"Local: twod_arrays","url":"c:\\Users\\saisa\\Desktop\\CPPProjs\\Array\\twod_arrays.cpp","tests":[{"id":1634045559108,"input":"3 3 2\n1 2 3 4 5 6 7 8 9 \n1 1 1 1 1 1","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\saisa\\Desktop\\CPPProjs\\Array\\twod_arrays.cpp","group":"local","local":true}
