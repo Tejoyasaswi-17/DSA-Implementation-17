@@ -10,7 +10,6 @@
 #include <stdlib.h>
 using namespace std;
 
-/*
 int Partition(int *A, int start, int end)
 {
     int Pindex = start;
@@ -57,58 +56,4 @@ int main()
     {
         cout << arr[i] << " ";
     }
-    
-}
-
-*/
-
-
-int Partition(int *arr, int start, int end)
-{
-    int pIndex = start;
-    int pivot = arr[end];
-    for(int i = start; i<end; i++)
-    {
-        if(arr[i] <= pivot)
-        {
-            swap(arr[i], arr[pIndex]);
-            pIndex++;
-        }
-    }
-    swap( arr[pIndex], arr[end]);
-
-    return pIndex;
-}
-
-int RandomisedPartition(int *arr, int start, int end)
-{
-    int i = start+(rand()%(end-start+1));
-    swap(arr[i], arr[end]);
-    int pivotIndex = Partition(arr,start,end);
-    return pivotIndex;
-}
-
-void QuickSort(int *arr, int start, int end)
-{
-    if(start<end)
-    {
-        int pivotIndex = RandomisedPartition(arr,start,end);
-        QuickSort(arr,start,pivotIndex-1);
-        QuickSort(arr,pivotIndex+1,end);
-    }
-}
-
-
-int main()
-
-{
-    int arr[]{1,6,2,3,4,5,9,0};
-    int end = sizeof(arr)/sizeof(arr[0]);
-    int start = 0;
-    QuickSort(arr, start, end-1);
-    for(int i = 0; i< end; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    
 }
