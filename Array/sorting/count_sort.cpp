@@ -3,7 +3,7 @@
 
 // 1. Find the count of every distinct element in the array
 // 2. Calculate the position of each element in sorted array
-// Workflow Array--> Count Array---> Cum Count Arr--->New Arr.
+// Workflow is Array--> Count Array---> Cum Count Arr--->output array to sorted array.
 
 #include <iostream>
 #include <string>
