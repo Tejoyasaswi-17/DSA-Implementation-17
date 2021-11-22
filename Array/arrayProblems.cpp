@@ -1,8 +1,13 @@
 /*
 Contents of this file
-1. Max till i
-2. Recursive version of binarySearch
-3. First and last occurence of an element using binarySearch
+1. Maximum till i in an array
+2. Sum of each possible subarrays of given array
+3. Sum of all subarrays for a given array using linear time complexity
+4. Longest arithmatic subarray
+5. Record Breaking days
+6. First repeating element
+7. Subarray with given sum
+8. Smallest positive missing number from the array
 */
 #include <iostream>
 #include <cmath>
@@ -11,56 +16,22 @@ Contents of this file
 #include <stdlib.h>
 #include <algorithm>
 using namespace std;
-/*
-int maxTilli(int arr[], int n , int i)
-{
-    int maximum = INT_MIN;
-    for(int j = 0 ; j <= i; j++)
-    {
-        if(arr[j] > maximum)
-        {
-            maximum = arr[j];
-        }
 
-    }
-    return maximum;
-}
+// 1. Maximum till position i
+// Logic is to iterate through the array with till ith index included and find the maximum element
 
-int main()
+// 2. Sum of each possible subarrays of given array
+// Logic is to use a nested for loop with first loop running from 0 to n and inner loop running from i to n
+// At each time iterating through the inner loop print out sum.
 
-{
-    int arr[] {0,-9,1,3,-4,5,7};
-    for(int k = 0; k <= 6; k++)
-    {
-        int max_till_i = maxTilli(arr,7, k);
-        cout << max_till_i << endl;
-    }
-    
-}
+// 3. Sum of all subarrays for a given array using linear time complexity
+// Actually there is pattern behind this question simply arr[i] appears (n-i)*(i+1) times where n is size of array
+// so simply we can return the sum. Sum = sigma(arr[i]*(n-i)*(i+1)) i from 0->n-1.
 
-*/
-
+// 4. Longest arithamatic subarray 
+// Arithmatic subarray is the subarray with prevdiff = currdiff
 /*
 int main()
-
-{
-    int arr[] {1,1,2,2};
-    for(int i = 0 ; i < 4; i++)
-    {
-        int sub_array_sum = 0;
-        for(int j = i ; j < 4 ; j++)
-        {
-            sub_array_sum += arr[j];
-            cout << sub_array_sum << endl;
-        }
-        
-    }
-}
-
-*/
-/*
-int main()
-
 {
     int arr[] {10,7,4,6,8,10,11};
     int n = sizeof(arr)/sizeof(arr[0]);
@@ -83,55 +54,55 @@ int main()
     cout << p << endl;
 }
 */
-
+// 5. Record breaking days 
 /*
 int main()
-
 {
-    int arr[] {1,2,0,7,2,0,2,2};
+    int arr[] { 3, 1, 4, 1, 5, 9, 2, 6, 5 };
     int n = sizeof(arr)/sizeof(arr[0]);
     int recBreakDays = 0;
-    int maxTill_i = -1;
+    int prevMax = INT_MIN;
     for(int i = 0; i < n; i++)
     {
-        if(arr[i]>arr[i+1] && arr[i] > maxTill_i)
+        //Check whether it is last day
+        if(i==n-1)
         {
-            recBreakDays+=1;
+            if(arr[i]>prevMax)
+            {
+                recBreakDays++;
+            }
         }
-        maxTill_i = max(maxTill_i, arr[i]);
+        else if (arr[i]>prevMax && arr[i] > arr[i+1])
+        {
+            recBreakDays++;
+        }
+        prevMax = max(prevMax, arr[i]);
     }
     cout << recBreakDays << endl;
 }
-
 */
 
-
-
-
-
-// First repeating element index
-
+// 6. First repeating element index
+// Here the answer is said with respect to zero indexing.
 /*
 int main()
 {
-    int n ;
-    cout << "Enter the size of array: ";
-    cin >> n;
-    int arr[n];
-    const int N= 1e6+2;
-    int indexArray[N];
-    cout << "Enter the elements of the array: " << endl;
+    int arr[]{1,5,3,4,3,5,6};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int max = INT_MIN;
     for(int i = 0; i < n; i++)
     {
-        cin >> arr[i];
+        if(arr[i] > max)
+        {
+            max = arr[i];
+        }
     }
-    for(int i = 0; i < N; i++)
+    int indexArray[max+1];
+    for(int i = 0; i <= max; i++)
     {
         indexArray[i] = -1;
     }
-
-    int minIndex = INT_MIN;
-
+    int minIndex = INT_MAX;
     for(int i = 0; i < n; i++)
     {
         if(indexArray[arr[i]] != -1)
@@ -140,27 +111,21 @@ int main()
         }
         else
         {
-            indexArray[arr[i]] = i;
+            indexArray[arr[i]] = i+1;
         }
     }    
     cout << minIndex << endl;
 }
-
 */
 
+// 7. Subarray with given sum
+// This problem can be solved in linear time using two pointer method.
 /*
-
-// Subarray with given sum
-
 int main()
-
 {
-    int arr[] {1,2,3,8};
+    int arr[] { 15, 2, 4, 8, 9, 5, 10, 23 };
     int n = sizeof(arr)/ sizeof(arr[0]);
-    int S;
-    cout << "Enter the required sum of the subarray: ";
-    cin >> S;
-    int i = 0;
+    int S= 23, i = 0;
     int start = i, end = n, subarraySum =0;
     while(start < end)
     {
@@ -175,20 +140,17 @@ int main()
         if(subarraySum == S)
         {
             cout << i+1 << " " << start+1 << endl;
-            break;
+            return 0;
         }
         start++;
     }
-
+    cout << -1 << endl;
 }
-
 */
-
-// Smallest missing positive number
+// 8. Smallest missing positive number
+// This can be solved using frequency array method
 /*
-
 int main()
-
 {
     int arr[] {0,1,2,3,4,5,6};
     int n = sizeof(arr)/sizeof(arr[0]);
@@ -212,7 +174,7 @@ int main()
             truthArray[arr[i]] = true;
         }
     }
-    int ans = -1; // Some index which is not possible in cpp arrays
+    int ans = -1; // Some index which is not possible in arrays
     for(int i = 1 ; i <= maxArr; i++)
     {
         if(truthArray[i] == false)
@@ -232,11 +194,31 @@ int main()
     }
     
 }
-
 */
 
-// Pair sum using less time complexity
+// 9. Printing all the possible subarrays
+/*
+int main()
+{
+    int arr[]{-1,4,7,2};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int st = 0,end = n-1;
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = i; j < n; j++)
+        {
+            for(int k = i; k <= j; k++)
+            {
+                cout << arr[k] << " ";
+            }
+            cout << endl;
+        }
+    }
+}
+*/
 
+// 10. Pair sum using less time complexity
+/*
 bool pairSum(int arr[], int n, int k)
 {
     int low = 0;
@@ -268,3 +250,4 @@ int main()
     int k = 31;
     cout << pairSum(arr, n, k) << endl;
 }
+*/
