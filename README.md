@@ -2,7 +2,7 @@
 
 This git repository consists of compilation of all data structures and algorithms implemented from scratch and also some of the basic applications, problems in that topic.
 
-## Topics Completed
+## Topics Covered So Far
 1. Arrays
 2. LinkedLists
 3. Polynomials
