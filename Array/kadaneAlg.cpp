@@ -11,7 +11,6 @@ Contents of the file
 2. Cumulative sum approach
 3. Kadane's Algorithm
 4. Maximum circular subarray sum
-5. Pair sum
 */
 
 // Find the subarray in an array which has maximum sum
