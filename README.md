@@ -1,6 +1,6 @@
 # DSA-Implementation-17
 
-This git repository consists of compilation of all data structures and algorithms implemented from scratch and also some of the basic applications, problems in that topic.
+This git repository consists of compilation of all data structures and algorithms implemented from scratch and also some of the basic applications, problems from that topic.
 
 ## Topics Covered So Far
 1. Arrays
